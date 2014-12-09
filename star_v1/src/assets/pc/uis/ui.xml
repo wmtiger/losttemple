@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:4a77b6ab17e2f1d0eec8f6600efd498c:1/1$ -->
+<TextureAtlas imagePath="ui.png">
+    <SubTexture name="btn_add_small" x="1001" y="37" width="19" height="20"/>
+    <SubTexture name="btn_battle_normal" x="2" y="114" width="212" height="110"/>
+    <SubTexture name="btn_battle_selected" x="644" y="2" width="212" height="110"/>
+    <SubTexture name="btn_card_normal" x="324" y="114" width="106" height="110"/>
+    <SubTexture name="btn_card_selected" x="218" y="226" width="106" height="110"/>
+    <SubTexture name="btn_home_normal" x="110" y="338" width="106" height="110"/>
+    <SubTexture name="btn_home_selected" x="216" y="114" width="106" height="110"/>
+    <SubTexture name="btn_shop_normal" x="110" y="226" width="106" height="110"/>
+    <SubTexture name="btn_shop_selected" x="2" y="338" width="106" height="110"/>
+    <SubTexture name="btn_summon_normal" x="2" y="226" width="106" height="110"/>
+    <SubTexture name="btn_summon_selected" x="858" y="2" width="106" height="110"/>
+    <SubTexture name="icon_crystal" x="966" y="37" width="33" height="33"/>
+    <SubTexture name="icon_gold" x="966" y="2" width="38" height="33"/>
+    <SubTexture name="ui_battle_pic1" x="218" y="338" width="80" height="80"/>
+    <SubTexture name="ui_battle_pic2" x="218" y="420" width="74" height="69"/>
+    <SubTexture name="ui_head_bar" x="2" y="2" width="640" height="107"/>
+</TextureAtlas>
