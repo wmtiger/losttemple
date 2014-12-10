@@ -11,6 +11,7 @@ package com.star
 	import starling.core.Starling;
 	import starling.events.Event;
 	import starling.utils.AssetManager;
+	import starling.utils.HAlign;
 	
 	import utils.AssetsUtil;
 	
@@ -29,6 +30,8 @@ package com.star
 		
 		private function initApp():void
 		{
+			Starling.current.showStatsAt(HAlign.LEFT);
+			
 			_firstLoading = new FirstLoading();
 			addChild(_firstLoading);
 			_firstLoading.x = STLConstant.StageWidth - 400 >> 1;
