@@ -1,10 +1,10 @@
 package com
 {
-	import com.losttemple.assets.Assets;
-	import com.losttemple.templates.base.Template;
-	
 	import com.framework.AppFacade;
 	import com.framework.view.ui.loading.FirstLoading;
+	import com.losttemple.assets.Assets;
+	import com.losttemple.templates.base.Template;
+	import com.losttemple.utils.AssetsUtil;
 	
 	import lzm.starling.STLConstant;
 	import lzm.starling.STLMainClass;
@@ -12,9 +12,6 @@ package com
 	import starling.core.Starling;
 	import starling.events.Event;
 	import starling.utils.AssetManager;
-	import starling.utils.HAlign;
-	
-	import com.losttemple.utils.AssetsUtil;
 	
 	public class GameMainClass extends STLMainClass
 	{
@@ -29,8 +26,6 @@ package com
 		
 		private function initApp():void
 		{
-			Starling.current.showStatsAt(HAlign.LEFT);
-			
 			_firstLoading = new FirstLoading();
 			addChild(_firstLoading);
 			_firstLoading.x = STLConstant.StageWidth - 400 >> 1;

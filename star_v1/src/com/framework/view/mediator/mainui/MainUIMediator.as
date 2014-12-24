@@ -3,7 +3,7 @@ package com.framework.view.mediator.mainui
 	import com.framework.AbstractMediator;
 	import com.framework.view.ui.mainui.MainUI;
 	
-	import com.framework.utils.Map;
+	import com.engine.utils.Map;
 	
 	public class MainUIMediator extends AbstractMediator
 	{

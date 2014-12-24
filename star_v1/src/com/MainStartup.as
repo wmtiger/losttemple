@@ -17,7 +17,7 @@ package com
 			stage.color = 0x333333;
 			stage.frameRate = 60;
 			
-			initStarling(GameMainClass,480,true);
+			initStarling(GameMainClass,stage.fullScreenWidth,true);// 这里如果打pc包要修改显示分辨率调试
 		}
 	}
 }

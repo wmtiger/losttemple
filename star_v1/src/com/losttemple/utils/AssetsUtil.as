@@ -14,7 +14,7 @@ package com.losttemple.utils
 		
 		public static function get urlHead():String
 		{
-			return "assets/" + AppCfg.RUN_TYPE + "/";
+			return "assets/" + AppCfg.LOCALE + "/" + AppCfg.RUN_TYPE + "/";
 		}
 		
 		/**

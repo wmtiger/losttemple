@@ -1,15 +1,32 @@
 package com.losttemple.mgr
 {
+	import com.framework.view.ui.base.IGameWnd;
+	
 	import flash.geom.Point;
+	import flash.utils.Dictionary;
 	
 	import starling.display.DisplayObjectContainer;
 
 	public class WndMgr
 	{
+		private static var _defaultWinParent:DisplayObjectContainer;
 		private static var _intstance:WndMgr;
+		
+		private var _dict:Dictionary;
 		
 		public function WndMgr()
 		{
+			_dict = new Dictionary();
+		}
+
+		public static function get defaultWinParent():DisplayObjectContainer
+		{
+			return _defaultWinParent;
+		}
+
+		public static function set defaultWinParent(value:DisplayObjectContainer):void
+		{
+			_defaultWinParent = value;
 		}
 
 		public static function get intstance():WndMgr
@@ -19,95 +36,121 @@ package com.losttemple.mgr
 			return _intstance;
 		}
 		
-		/**
-		 * 关闭窗口
-		 * 内部调用,外部请使用hideWindow
-		 */
-		public static function closeWindow(window:ILiteWindow):void
+		private function hasWnd(key:String):Boolean
 		{
-			instance.closeWindow(window);
+			return (_dict[key] != null);
+		}
+		
+		private function addWnd(key:String, wnd:IGameWnd):void
+		{
+			if (!hasWnd(key)) 
+			{
+				_dict[key] = wnd;
+			}
+		}
+		
+		private function getWnd(clsName:String):IGameWnd
+		{
+			var w:IGameWnd;
+			for (var i:String in _dict) 
+			{
+				if (i.indexOf(clsName) >= 0) 
+				{
+					w = _dict[i];
+					break;
+				}
+			}
+			return w;
+		}
+		
+		private function removeWnd(key:String):void
+		{
+			delete _dict[key];
 		}
 		
 		/**
 		 * 关闭窗口
 		 */
-		public static function hideWindowByType(cls:Class):void {
-			if (isOpenByWindowType(cls)) {
-				getWindow(cls).hide();
+		public function closeWindow(windowCls:Class):void
+		{
+			var key:String = "" + windowCls;
+			var w:IGameWnd = getWnd(key);
+			if(w)
+			{
+				w.close();
+				removeWnd(key);
 			}
 		}
 		
 		/**
 		 * 关闭所有窗口
 		 */
-		public static function hideAllWindows(exceptWindow:Class = null):void {
-			instance.hideAllWindows(exceptWindow);
-		}
-		
-		public static function set defaultWinParent(value:DisplayObjectContainer):void {
-			instance.defaltWindowParent = value;
-		}
-		
-		public static function get defaultWinParent():DisplayObjectContainer {
-			return instance.defaltWindowParent;
+		public function closeAllWindows(exceptWindowCls:Class = null):void {
+			var key:String = ""+exceptWindowCls;
+//			var key:String = "[class "+exceptWindowCls+"]";
+			var w:IGameWnd;
+			for (var i:String in _dict) 
+			{
+				if (i.indexOf(key) < 0) 
+				{
+					w = _dict[i];
+					if(w)
+					{
+						w.close();
+						removeWnd(key);
+					}
+				}
+			}
 		}
 		
 		/**
 		 * 显示窗口
 		 * @param window
-		 *
 		 */
-		public static function showWindow(cls:Class, position:Point = null, parent:DisplayObjectContainer = null, modal:Boolean = true
-										  , candispose:Boolean = true, fullScreen:Boolean = false, windowType:int = -1, isSingleton:Boolean = false, showMovie:Object = null):ILiteWindow
+		public function showWindow(cls:Class, position:Point = null, parent:DisplayObjectContainer = null, modal:Boolean = true,
+									candispose:Boolean = true, fullScreen:Boolean = false, windowType:int = -1,
+									isSingleton:Boolean = false, showMovie:Object = null):IGameWnd
 		{
-			isCreateWindow = true;
-			var window:ILiteWindow = instance.showWindow(cls, position, parent, modal, candispose, fullScreen, windowType, isSingleton, showMovie);
-			isCreateWindow = false;
-			return window;
+			var wnd:IGameWnd;
+			var key:String = "" + cls;
+			if (!hasWnd(key)) 
+			{
+				wnd = new cls();
+				addWnd(key,wnd);
+			}
+			else
+			{
+				wnd = getWnd(key);
+			}
+			wnd.show(position,parent,modal,candispose);
+			return wnd;
 		}
 		
 		/**
-		 * 获取窗体的实例 为了防止窗口在其它地方进行实例化
-		 * @param cls
+		 * 检察某类型的窗口是否是显示状态
+		 * @param wndCls
 		 * @return
 		 */
-		public static function getWindow(cls:Class):ILiteWindow
+		public function isWndShow(wndCls:Class):IGameWnd
 		{
-			isCreateWindow = true;
-			var window:ILiteWindow = instance.getWindow(cls);
-			isCreateWindow = false;
-			return window;
+			var key:String = "" + wndCls;
+			var wnd:IGameWnd;
+			if (!hasWnd(key)) 
+				wnd = getWnd(key);
+			if(wnd && wnd.visible)
+				return wnd;
+			return null;
 		}
 		
-		/**
-		 * 检察某类型的窗口是否是开启状态
-		 * @param typeCls
-		 * @return
-		 */
-		public static function isOpenByWindowType(typeCls:Class):ILiteWindow
+		public function removeCacheWindow():void
 		{
-			return instance.isOpenByWindowType(typeCls);
+			// to do
 		}
 		
-		public static function removeCacheWindow():void
+		public function isWndExist(wndCls:Class):Boolean
 		{
-			return instance.removeCacheWindow();
+			var key:String = "" + wndCls;
+			return hasWnd(key);
 		}
-		
-		public static function isExist(_cls:Class):Boolean
-		{
-			return instance.isExist(_cls);
-		}
-		/**
-		 * 
-		 * @param value 窗口visable
-		 * @param withoutWnd 不生效窗口
-		 * 
-		 */	
-		public static function setAllWindowsVisable(value:Boolean,withoutWnd:ILiteWindow=null):void
-		{
-			instance.setAllWindowsVisable(value,withoutWnd)
-		}
-
 	}
 }

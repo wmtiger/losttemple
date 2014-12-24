@@ -1,6 +1,8 @@
 package com.framework.controller.cmds.ui
 {
 	import com.framework.AbstractCmd;
+	import com.framework.view.ui.mainui.MainUI;
+	import com.losttemple.mgr.WndMgr;
 	
 	import org.puremvc.as3.interfaces.INotification;
 	
@@ -13,7 +15,7 @@ package com.framework.controller.cmds.ui
 		
 		override public function execute(notice:INotification):void
 		{
-			
+			WndMgr.intstance.showWindow(MainUI);
 		}
 	}
 }

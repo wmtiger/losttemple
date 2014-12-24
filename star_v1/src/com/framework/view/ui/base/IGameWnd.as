@@ -8,13 +8,6 @@ package com.framework.view.ui.base
 
 	public interface IGameWnd extends IFeathersControl
 	{
-		/*窗口的状态*/
-		function set windowState(value:String):void;
-		function get windowState():String;
-		
-		/*窗口的类型*/
-		function set windowType(value:int):void;
-		function get windowType():int;
 		
 		/*窗口的标题*/		
 		function set title(value:String):void;
@@ -30,7 +23,7 @@ package com.framework.view.ui.base
 		/**
 		 * 关闭
 		 */
-		function hide():void;
+		function close():void;
 		
 		/**
 		 * 是否可以回收
@@ -38,13 +31,13 @@ package com.framework.view.ui.base
 		 */
 		function get canDispose():Boolean;
 		
-		function get showMovie():Boolean;
+		function get needFadeIn():Boolean;
 		
-		function set showMovie(value:Boolean):void;
+		function set needFadeIn(value:Boolean):void;
 		
-		/**
-		 * 初始化的动画类
-		 */
-		function animateOverHandle():void;
+		function get needFadeOut():Boolean;
+		
+		function set needFadeOut(value:Boolean):void;
+		
 	}
 }

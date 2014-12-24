@@ -11,22 +11,26 @@ package com.framework.view.ui.base
 	import starling.core.Starling;
 	import starling.display.DisplayObjectContainer;
 	import starling.display.Quad;
-	import starling.events.Event;
-	import starling.events.Touch;
-	import starling.events.TouchEvent;
-	import starling.events.TouchPhase;
 	
-	public class GameWnd extends FeathersControl
+	public class GameWnd extends FeathersControl implements IGameWnd
 	{
+		/**
+		 * 窗口标题
+		 */		
+		protected var _title:String = "GameWnd";
 		/**
 		 * 表示该窗口是否可以被回收，true 为表示可以回,false表示不能回收
 		 * 不能回收的窗口类,将根据系统内存情况来确定是否回收.
 		 */
 		protected var _canDispose:Boolean = true;
 		/**
-		 * 是否显示弹出缓动效果的变量设置
+		 * 是否要有缓动显示效果的变量设置
 		 */		
-		protected var _showMovie:Boolean = true;
+		protected var _needFadeIn:Boolean = false;
+		/**
+		 * 是否要有缓动关闭效果的变量设置
+		 */		
+		protected var _needFadeOut:Boolean = false;
 		/**
 		 * 弹出窗口的底层遮罩
 		 */		
@@ -34,13 +38,27 @@ package com.framework.view.ui.base
 		/**
 		 * 是否点击弹出窗口的底层遮罩时，关闭窗口
 		 */		
-		protected var _isClickMaskClose:Boolean = false;
-		
-		public var isPlayingToClose:Boolean;
+		protected var _needClickMaskClose:Boolean = false;
+		/**
+		 * 是否正在缓动关闭界面
+		 */		
+		protected var _isPlayingToClose:Boolean;
 		
 		public function GameWnd()
 		{
 			super();
+			this.width = STLConstant.StageWidth;
+			this.height = STLConstant.StageHeight;
+		}
+		
+		public function set title(value:String):void
+		{
+			_title = value;
+		}
+		
+		public function get title():String
+		{
+			return _title;
 		}
 		
 		public function get canDispose():Boolean
@@ -53,12 +71,20 @@ package com.framework.view.ui.base
 			_canDispose = val;
 		}
 		
-		public function get showMovie():Boolean {
-			return _showMovie;
+		public function get needFadeIn():Boolean {
+			return _needFadeIn;
 		}
 		
-		public function set showMovie(value:Boolean):void {
-			_showMovie = value;
+		public function set needFadeIn(value:Boolean):void {
+			_needFadeIn = value;
+		}
+		
+		public function get needFadeOut():Boolean {
+			return _needFadeOut;
+		}
+		
+		public function set needFadeOut(value:Boolean):void {
+			_needFadeOut = value;
 		}
 		
 		protected function customPopMaskFactory():Quad
@@ -66,6 +92,30 @@ package com.framework.view.ui.base
 			var pop:Quad = new Quad(1,1,0x0);
 			pop.alpha = 0.5;
 			return pop;
+		}
+		
+		/**
+		 * 自定义的缓入
+		 * @param callback		缓入完毕后的回调
+		 */		
+		protected function customFadeInFactory(callback:Function):void
+		{
+			if(callback != null)
+			{
+				callback.call();
+			}
+		}
+		
+		/**
+		 * 自定义的缓出
+		 * @param callback		缓出完毕后的回调
+		 */	
+		protected function customFadeOutFactory(callback:Function):void
+		{
+			if(callback != null)
+			{
+				callback.call();
+			}
 		}
 		
 		/**
@@ -84,7 +134,8 @@ package com.framework.view.ui.base
 			}
 			
 			// 添加到其他组件, 判断是否需要增加modal,是否需要播放动画
-			if (!parent.contains(this)) {
+			if (!parent.contains(this))
+			{
 				if (modal) {
 					if(_popMask == null)
 					{
@@ -124,10 +175,6 @@ package com.framework.view.ui.base
 			}
 		}
 		
-		private function wndRemovedFromStageHandler(e:Event):void
-		{
-			
-		}
 		/*
 		private function onTouchPopMask(e:TouchEvent):void
 		{
@@ -212,9 +259,21 @@ package com.framework.view.ui.base
 		/**
 		 * 关闭窗口
 		 */
-		public function hide():void
+		public function close():void
 		{
-			isPlayingToClose = false;
+			if(_needFadeOut)
+			{
+				
+			}
+			else
+			{
+				closeWnd();
+			}
+		}
+		
+		protected function closeWnd():void
+		{
+			_isPlayingToClose = false;
 			Starling.juggler.removeTweens(this);
 			this.removeFromParent(canDispose);
 		}

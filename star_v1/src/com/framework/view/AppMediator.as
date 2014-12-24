@@ -1,11 +1,13 @@
 package com.framework.view
 {
 	import com.GameMainClass;
+	import com.engine.utils.Map;
 	import com.framework.AbstractMediator;
+	import com.framework.MediatorConst;
+	import com.framework.controller.cmds.ui.ShowMainUICmd;
+	import com.losttemple.mgr.WndMgr;
 	
 	import starling.display.DisplayObjectContainer;
-	
-	import com.framework.utils.Map;
 	
 	public class AppMediator extends AbstractMediator
 	{
@@ -17,6 +19,7 @@ package com.framework.view
 		{
 			super(NAME);
 			this._rootView = initViewComponent as GameMainClass;
+			WndMgr.defaultWinParent = this._rootView;
 		}
 		
 		override public function onRegister():void
@@ -30,7 +33,7 @@ package com.framework.view
 		override protected function listNotificationListeners(listeners:Map):void
 		{
 			super.listNotificationListeners(listeners);
-			
+			appFacade.registerCommand(MediatorConst.SHOW_MAIN_UI, ShowMainUICmd);
 		}
 	}
 }

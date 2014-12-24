@@ -4,7 +4,7 @@ package com.framework
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
-	import com.framework.utils.Map;
+	import com.engine.utils.Map;
 	
 	public class AbstractMediator extends Mediator {
 		private var _listeners:Map;

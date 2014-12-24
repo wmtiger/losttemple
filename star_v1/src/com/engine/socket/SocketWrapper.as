@@ -6,7 +6,7 @@ package com.engine.socket
 	import flash.net.Socket;
 	import flash.utils.ByteArray;
 	
-	import com.framework.utils.Map;
+	import com.engine.utils.Map;
 
 	/**
 	 * AMF Socket wrapper

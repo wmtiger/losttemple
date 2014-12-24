@@ -1,8 +1,8 @@
 package com.framework
 {
 	import com.framework.controller.StartupAppCmd;
-	import com.framework.utils.Console;
-	import com.framework.utils.Map;
+	import com.engine.utils.Console;
+	import com.engine.utils.Map;
 	
 	import flash.utils.getQualifiedClassName;
 	

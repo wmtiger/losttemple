@@ -2,10 +2,11 @@ package com.framework.view.ui.mainui
 {
 	import com.framework.AppFacade;
 	import com.framework.view.mediator.mainui.MainUIMediator;
+	import com.framework.view.ui.base.GameWnd;
 	import com.losttemple.assets.Assets;
+	import com.losttemple.utils.AssetsUtil;
 	
 	import feathers.controls.ImageLoader;
-	import feathers.core.FeathersControl;
 	
 	import lzm.starling.STLConstant;
 	
@@ -13,9 +14,7 @@ package com.framework.view.ui.mainui
 	import starling.display.Image;
 	import starling.events.Event;
 	
-	import com.losttemple.utils.AssetsUtil;
-	
-	public class MainUI extends FeathersControl
+	public class MainUI extends GameWnd
 	{
 		private var _headBar:Image;
 		private var _homeBtn:Button;
