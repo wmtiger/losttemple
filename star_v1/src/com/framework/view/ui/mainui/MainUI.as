@@ -5,6 +5,7 @@ package com.framework.view.ui.mainui
 	import com.framework.view.ui.base.GameWnd;
 	import com.losttemple.assets.Assets;
 	import com.losttemple.utils.AssetsUtil;
+	import feathers.display.Scale3Image;
 	
 	import feathers.controls.ImageLoader;
 	
@@ -16,7 +17,7 @@ package com.framework.view.ui.mainui
 	
 	public class MainUI extends GameWnd
 	{
-		private var _headBar:Image;
+		private var _headBar:Scale3Image;
 		private var _homeBtn:Button;
 		private var _cardBtn:Button;
 		private var _battleBtn:Button;
@@ -35,8 +36,9 @@ package com.framework.view.ui.mainui
 			bg.source = AssetsUtil.getImgsUrlByName("bigpic/aa.jpg");
 			addChild(bg);
 			
-			_headBar = new Image(Assets.instance.assetMgr.getTexture("ui_head_bar_bg"));
+			_headBar = new Scale3Image(Assets.instance.ui_head_bar_bg_S3Texture);
 			addChild(_headBar);
+			_headBar.width = STLConstant.StageWidth;
 			
 			_homeBtn = new Button(Assets.instance.assetMgr.getTexture("ui_btn2_normal"),"HOME",Assets.instance.assetMgr.getTexture("ui_btn2_selected"));
 			addChild(_homeBtn);

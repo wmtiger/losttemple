@@ -1,7 +1,10 @@
 package com.losttemple.assets.themes
 {
 	import com.framework.view.comps.LtBtn;
+	import com.losttemple.assets.Assets;
+	import feathers.display.Scale3Image;
 	import flash.text.Font;
+	import starling.textures.TextureSmoothing;
 	
 	import feathers.controls.ScrollBar;
 	import feathers.core.DisplayListWatcher;
@@ -70,15 +73,12 @@ package com.losttemple.assets.themes
 		
 		private function ltBtnDefInit(btn:LtBtn):void
 		{
-			btn.defaultSkin = new Scale9Image(UIAsset.getInstance().liteButtonNormalSkinTextures);
+			btn.defaultSkin = new Scale3Image(Assets.instance.ui_btn2_normal_S3Texture);
 			btn.downSkin = null
-			btn.disabledSkin = new Scale9Image(UIAsset.getInstance().liteButtonDisableSkinTextures);
 //			btn.disabledSkin = new Image(UIAsset.getInstance().fightBtnNormal);
-			btn.defaultLabelProperties.textFormat = UIAsset.getInstance().hkButtonBigFormatYellow;
+			btn.defaultLabelProperties.textFormat = Assets.instance.defTextFmt;
 			btn.defaultLabelProperties.smoothing = TextureSmoothing.BILINEAR;
 			btn.scaleForDownSkin = true;
-//			btn.width = 127;
-//			btn.height = 70;
 		}
 		
 		protected static function verticalScrollBarFactory():ScrollBar

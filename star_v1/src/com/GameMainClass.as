@@ -61,6 +61,7 @@ package com
 		
 		private function startupFacade():void
 		{
+			Assets.instance.init();
 			AppFacade.instance.startUp(this);
 		}
 		
