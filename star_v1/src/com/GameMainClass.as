@@ -3,6 +3,8 @@ package com
 	import com.framework.AppFacade;
 	import com.framework.view.ui.loading.FirstLoading;
 	import com.losttemple.assets.Assets;
+	import com.losttemple.assets.themes.LosTempTheme;
+	import com.losttemple.mgr.GameMgr;
 	import com.losttemple.templates.base.Template;
 	import com.losttemple.utils.AssetsUtil;
 	
@@ -46,6 +48,7 @@ package com
 		{
 			Assets.instance.assetMgr = new AssetManager(STLConstant.scale,STLConstant.useMipMaps);
 			var am:AssetManager = Assets.instance.assetMgr;
+			GameMgr.assetMgr = am;
 			am.verbose = true;
 			am.enqueue([AssetsUtil.getUIsDirFile()]);
 			am.loadQueue(function(ratio:Number):void{
@@ -61,7 +64,12 @@ package com
 		
 		private function startupFacade():void
 		{
+			// 加载完必要资源，开始初始化资源
 			Assets.instance.init();
+			GameMgr.themeMgr = new LosTempTheme(this);
+			GameMgr.themeMgr.initialize();
+			
+			// 初始化游戏界面
 			AppFacade.instance.startUp(this);
 		}
 		

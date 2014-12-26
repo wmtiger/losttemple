@@ -1,6 +1,7 @@
 package com.framework.view.comps
 {
 	import com.losttemple.assets.themes.StyleName;
+	import com.losttemple.assets.themes.StyleValue;
 	
 	import flash.display.BitmapData;
 	import flash.display.StageQuality;
@@ -91,7 +92,7 @@ package com.framework.view.comps
 			mWordWrap = true;
 			mBold = bold;
 			mAutoSize = TextFieldAutoSize.NONE;
-			this.fontName = StyleName.FONT_FZY4;
+			this.fontName = StyleValue.FONT_NAME_FZY4;
 			_isHtml = isHtml;
 			
 			if (width == -1)
@@ -224,7 +225,7 @@ package com.framework.view.comps
 				
 				var txtFormat:TextFormat = sNativeTextField ? sNativeTextField.defaultTextFormat : null;
 				//由于嵌入的字体基线在低于设备字体的基线所以，当使用设备字体时需要往下偏一点点
-				if (sNativeTextField && !sNativeTextField.embedFonts && txtFormat && txtFormat.font == StyleName.FONT_FZY4)
+				if (sNativeTextField && !sNativeTextField.embedFonts && txtFormat && txtFormat.font == StyleValue.FONT_NAME_FZY4)
 				{
 					offsetY = Math.round(int(sNativeTextField.defaultTextFormat.size) * DEFAULT_FONT_SCALE);
 				}

@@ -2,9 +2,13 @@ package com.framework.view.comps
 {
 	import com.engine.utils.ResourceBundleUtil;
 	import com.losttemple.assets.themes.StyleName;
+	import com.losttemple.assets.themes.StyleValue;
 	import com.losttemple.cfgs.AppCfg;
+	
 	import feathers.controls.Button;
+	
 	import starling.display.DisplayObjectContainer;
+	import starling.display.Image;
 	import starling.events.Event;
 	
 	/**
@@ -13,13 +17,8 @@ package com.framework.view.comps
 	 */
 	public class LtBtn extends CustomBtn
 	{
-		protected var _sgLabel:LtLabel;
-		protected var _btnLabelStyle:String = StyleName.HK_BUTTON_BIG;
-		
-		public function LtBtn()
-		{
-			super();
-		}
+		protected var _ltLabel:LtLabel;
+		protected var _btnLabelStyle:String = StyleValue.FONT_NAME_FZY4;
 		
 		public function LtBtn()
 		{
@@ -33,15 +32,18 @@ package com.framework.view.comps
 		 * @param styleName 文理名字
 		 * @param label 按钮显示文字
 		 * @return
-		 *
 		 */
-		public static function createLtBtn(parent:DisplayObjectContainer, styleName:String = null, label:String = ""):LtBtn
+		public static function createLtBtn(parent:DisplayObjectContainer, styleName:String = null,
+				label:String = "", wid:int = 100, hei:int = 86, x:Number = 0, y:Number = 0):LtBtn
 		{
 			var btn:LtBtn = new LtBtn();
 			btn.nameList.add(styleName ? styleName : StyleName.BTN_DEF);
 			parent.addChild(btn);
 			btn.label = label;
-			btn.width = 158;
+			btn.width = wid;
+			btn.height = hei;
+			btn.x = x;
+			btn.y = y;
 			return btn;
 		}
 		
@@ -68,15 +70,15 @@ package com.framework.view.comps
 				this.touchable = false;
 				this.currentState = STATE_DISABLED;
 				
-				if (_sgLabel)
+				if (_ltLabel)
 				{
-					_sgLabel.alpha = 0.6;
+					_ltLabel.alpha = 0.6;
 				}
 				if (disabledSkin == null)
 				{
-					var image:Image = this.defaultSkin as Image
+					var image:Image = this.defaultSkin as Image;
 					if (image)
-						image.color = Global.DARK_COlOR;
+						image.color = StyleValue.STYLE_COlOR_DARK;
 				}
 			}
 			else
@@ -88,31 +90,31 @@ package com.framework.view.comps
 					this.currentState = STATE_UP;
 				}
 				this.touchable = true;
-				if (_sgLabel)
+				if (_ltLabel)
 				{
-					_sgLabel.alpha = 1;
-					image = this.defaultSkin as Image
+					_ltLabel.alpha = 1;
+					image = this.defaultSkin as Image;
 					if (image)
-						image.color = 0xffffff;
+						image.color = StyleValue.STYLE_COlOR_WHITE;
 				}
 			}
 		}
 		
 		protected function initLabel():void
 		{
-			_sgLabel = new LtLabel();
-			_sgLabel.nameList.add(_btnLabelStyle);
-			addChild(_sgLabel);
+			_ltLabel = new LtLabel();
+			_ltLabel.nameList.add(_btnLabelStyle);
+			addChild(_ltLabel);
 			if (_isEnabled)
 			{
-				_sgLabel.alpha = 1;
+				_ltLabel.alpha = 1;
 			}
 			else
 			{
-				_sgLabel.alpha = 0.6;
+				_ltLabel.alpha = 0.6;
 			}
 			
-			if (_curStr && _sgLabel && _sgLabel.text != _curStr)
+			if (_curStr && _ltLabel && _ltLabel.text != _curStr)
 			{
 				label = _curStr;
 			}
@@ -122,18 +124,18 @@ package com.framework.view.comps
 		override public function set label(value:String):void
 		{
 			_curStr = value;
-			if (_sgLabel)
+			if (_ltLabel)
 			{
-				_sgLabel.text = _curStr;
-				_sgLabel.redraw();
-				if (this.actualWidth <= _sgLabel.currentWidth)
+				_ltLabel.text = _curStr;
+				_ltLabel.redraw();
+				if (this.actualWidth <= _ltLabel.currentWidth)
 				{
-					this.actualWidth = _sgLabel.currentWidth + 20;
+					this.actualWidth = _ltLabel.currentWidth + 20;
 				}
 				
-				if (this.actualHeight <= _sgLabel.currentHeight)
+				if (this.actualHeight <= _ltLabel.currentHeight)
 				{
-					this.actualHeight = _sgLabel.currentHeight + 28;
+					this.actualHeight = _ltLabel.currentHeight + 28;
 				}
 				this.invalidate(INVALIDATION_FLAG_SIZE);
 			}
@@ -142,15 +144,15 @@ package com.framework.view.comps
 		override protected function scaleSkin():void
 		{
 			super.scaleSkin();
-			_sgLabel.x = (actualWidth - _sgLabel.currentWidth) / 2 + labelOffsetX;
-			_sgLabel.y = (actualHeight - _sgLabel.currentHeight) / 2 + labelOffsetY;
+			_ltLabel.x = (actualWidth - _ltLabel.currentWidth) / 2 + labelOffsetX;
+			_ltLabel.y = (actualHeight - _ltLabel.currentHeight) / 2 + labelOffsetY;
 		}
 		
 		override public function get label():String
 		{
-			if (_sgLabel)
+			if (_ltLabel)
 			{
-				return _sgLabel.text;
+				return _ltLabel.text;
 			}
 			return null;
 		}
@@ -168,8 +170,8 @@ package com.framework.view.comps
 		public function set btnLabelStyle(style:String):void
 		{
 			_btnLabelStyle = style;
-			if (_sgLabel)
-				_sgLabel.nameList.add(_btnLabelStyle);
+			if (_ltLabel)
+				_ltLabel.nameList.add(_btnLabelStyle);
 		}
 		
 		override public function dispose():void
