@@ -9,10 +9,13 @@ package com.losttemple.assets.themes
 		// 按钮风格类
 		public static const BTN_DEF:String = "BTN_DEF";
 		public static const BTN_MAINUI_TAB:String = "BTN_MAINUI_TAB";
+		public static const BTN_MAINUI_TAB2:String = "BTN_MAINUI_TAB2";
 		
 		// 文本风格类
 		public static const LABEL_DEF:String = "LABEL_DEF";
 		
+		// tab风格类
+		public static const TAB_BAR_DEF:String = "TAB_MAINUI";
 		
 		
 		public function StyleName() 

@@ -2,22 +2,21 @@ package com.losttemple.assets.themes
 {
 	import com.framework.view.comps.LtBtn;
 	import com.framework.view.comps.LtLabel;
-	import com.gameabc.sanguo.core.Global;
+	import com.framework.view.comps.LtTabBar;
+	import com.framework.view.comps.LtTabBtn;
 	import com.losttemple.assets.Assets;
-	import feathers.controls.TabBar;
 	
 	import flash.text.Font;
 	
-	import assets.assetProxy.UIAsset;
-	
 	import feathers.controls.ScrollBar;
+	import feathers.controls.TabBar;
+	import feathers.controls.ToggleButton;
 	import feathers.core.DisplayListWatcher;
-	import feathers.display.Scale3Image;
+	import feathers.display.Scale9Image;
 	import feathers.system.DeviceCapabilities;
 	
 	import starling.core.Starling;
 	import starling.display.DisplayObjectContainer;
-	import starling.textures.TextureSmoothing;
 	
 	public class LosTempTheme extends DisplayListWatcher
 	{
@@ -62,12 +61,7 @@ package com.losttemple.assets.themes
 			return scrollBar;
 		}
 		
-		override public function dispose():void
-		{
-			super.dispose();
-		}
-		
-		public function initialize():void
+		protected function initScale():void
 		{
 			const scaledDPI:int = DeviceCapabilities.dpi / Starling.contentScaleFactor;
 			if (this._scaleToDPI)
@@ -87,17 +81,29 @@ package com.losttemple.assets.themes
 			}
 			this.scale = scaledDPI / this._originalDPI;
 			
+		}
+		
+		override public function dispose():void
+		{
+			super.dispose();
+		}
+		
+		public function initialize():void
+		{
+			initScale();
+			
 			Font.registerFont(FZ_FONT_CLS);
 			
 			// 按钮风格
 			setInitializerForClass(LtBtn, ltBtnDefInit);
 			setInitializerForClass(LtBtn, ltBtnMainTabInit, StyleName.BTN_MAINUI_TAB);
+			setInitializerForClass(LtTabBtn, ltTabBtnMainTabInit, StyleName.BTN_MAINUI_TAB2);
 			
 			// 文本风格
 			setInitializerForClass(LtLabel, ltLabelDefInit, StyleName.LABEL_DEF);
 			
 			// Tabbar风格
-			setInitializerForClass(TabBar, mainUITabInit, StyleName.TAB_BAR_EQUIP);
+			setInitializerForClass(TabBar, tabDefInit, StyleName.TAB_BAR_DEF);
 		}
 		
 		private function ltLabelDefInit(label:LtLabel):void
@@ -106,9 +112,18 @@ package com.losttemple.assets.themes
 			label.nativeFilters = [StyleValue.DROPSHADOW_BLACK];
 		}
 		
+		private function ltTabBtnMainTabInit(btn:LtTabBtn):void
+		{
+			btn.defaultSkin = new Scale9Image(Assets.instance.ui_btn2_normal_S9Texture);
+			btn.downSkin = new Scale9Image(Assets.instance.ui_btn2_selected_S9Texture);
+			btn.defaultSelectedSkin = new Scale9Image(Assets.instance.ui_btn2_selected_S9Texture);
+			btn.disabledSkin = null;
+			btn.btnLabelStyle = StyleName.LABEL_DEF;
+		}
+		
 		private function ltBtnMainTabInit(btn:LtBtn):void
 		{
-			btn.defaultSkin = new Scale3Image(Assets.instance.ui_btn2_normal_S3Texture);
+			btn.defaultSkin = new Scale9Image(Assets.instance.ui_btn2_normal_S9Texture);
 			btn.downSkin = null
 			btn.disabledSkin = null
 			btn.btnLabelStyle = StyleName.LABEL_DEF;
@@ -118,28 +133,21 @@ package com.losttemple.assets.themes
 		
 		private function ltBtnDefInit(btn:LtBtn):void
 		{
-			btn.defaultSkin = new Scale3Image(Assets.instance.ui_btn2_normal_S3Texture);
+			btn.defaultSkin = new Scale9Image(Assets.instance.ui_btn2_normal_S9Texture);
 			btn.downSkin = null
-//			btn.disabledSkin = new Image(UIAsset.getInstance().fightBtnNormal);
 			btn.defaultLabelProperties.textFormat = Assets.instance.defTextFmt;
-//			btn.defaultLabelProperties.smoothing = TextureSmoothing.BILINEAR;
 			btn.scaleForDownSkin = true;
 		}
 		
-		protected function equipWinTabbarInitializer(tab:TabBar):void
+		protected function tabDefInit(tab:TabBar):void
 		{
-			tab.distributeTabSizes = false
-			tab.tabFactory = function():LtBtn
+			tab.distributeTabSizes = false;
+			tab.tabFactory = function():ToggleButton
 			{
-				const skinSelector:ImageStateValueSelector = new ImageStateValueSelector();
-				skinSelector.defaultValue = MainManager.assets.getTexture("tab_hero_normal");
-				skinSelector.defaultSelectedValue = MainManager.assets.getTexture("tab_hero_select");
-				var button:SgButton = new SgButton();
-				button.labelOffsetY = 8;
-				button.sgLabelStyle = StyleName.EQUIP_WIN_BUTTON_BIG;
-				button.stateToSkinFunction = skinSelector.updateValue;
-				return button;
-			}
+				var tab:LtTabBtn = new LtTabBtn();
+				tab.nameList.add(StyleName.BTN_MAINUI_TAB2);
+				return tab;
+			};
 		}
 	
 	}

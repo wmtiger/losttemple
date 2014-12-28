@@ -1,6 +1,5 @@
 package com.losttemple.assets
 {
-	import com.losttemple.assets.themes.StyleName;
 	import com.losttemple.assets.themes.StyleValue;
 	
 	import flash.geom.Rectangle;
@@ -24,11 +23,13 @@ package com.losttemple.assets
 		
 		// 以下为资源命名
 		public var ui_head_bar_bg_Texture:Texture;
-		public var ui_head_bar_bg_S3Texture:Scale3Textures;
+		public var ui_head_bar_bg_S9Texture:Scale9Textures;
 		public var ui_btn2_normal_Texture:Texture;
-		public var ui_btn2_normal_S3Texture:Scale3Textures;
+		public var ui_btn2_normal_S9Texture:Scale9Textures;
+		public var ui_btn2_selected_Texture:Texture;
+		public var ui_btn2_selected_S9Texture:Scale9Textures;
 		public var ui_tab_bg_Texture:Texture;
-		public var ui_tab_bg_S3Texture:Scale3Textures;
+		public var ui_tab_bg_S9Texture:Scale9Textures;
 		
 		public function Assets()
 		{
@@ -48,11 +49,13 @@ package com.losttemple.assets
 		private function initTexture():void
 		{
 			ui_head_bar_bg_Texture = assetMgr.getTexture("ui_head_bar_bg");
-			ui_head_bar_bg_S3Texture = new Scale3Textures(ui_head_bar_bg_Texture, 130, 20);
+			ui_head_bar_bg_S9Texture = new Scale9Textures(ui_head_bar_bg_Texture, new Rectangle(130, 0, 20, 105));
 			ui_btn2_normal_Texture = assetMgr.getTexture("ui_btn2_normal");
-			ui_btn2_normal_S3Texture = new Scale3Textures(ui_btn2_normal_Texture, 30, 30);
+			ui_btn2_normal_S9Texture = new Scale9Textures(ui_btn2_normal_Texture, new Rectangle(30, 0, 30, 86));
+			ui_btn2_selected_Texture = assetMgr.getTexture("ui_btn2_selected");
+			ui_btn2_selected_S9Texture = new Scale9Textures(ui_btn2_selected_Texture, new Rectangle(30, 0, 30, 86));
 			ui_tab_bg_Texture = assetMgr.getTexture("ui_tab_bg");
-			ui_tab_bg_S3Texture = new Scale3Textures(ui_tab_bg_Texture, 10, 6);
+			ui_tab_bg_S9Texture = new Scale9Textures(ui_tab_bg_Texture, new Rectangle(10, 20, 6, 6));
 		}
 		
 		public function init():void
