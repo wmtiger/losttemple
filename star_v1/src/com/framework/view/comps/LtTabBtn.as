@@ -22,27 +22,6 @@ package com.framework.view.comps
 			super();
 		}
 		
-		/**
-		 * 创建 LtTabBtn
-		 * @param parentObj 父类
-		 * @param styleName 文理名字
-		 * @param label 按钮显示文字
-		 * @return
-		 */
-		public static function createBtn(parent:DisplayObjectContainer, styleName:String = null,
-										   label:String = "", wid:int = 100, hei:int = 86, x:Number = 0, y:Number = 0):LtTabBtn
-		{
-			var btn:LtTabBtn = new LtTabBtn();
-			btn.nameList.add(styleName ? styleName : StyleName.BTN_MAINUI_TAB2);
-			parent.addChild(btn);
-			btn.label = label;
-			btn.width = wid;
-			btn.height = hei;
-			btn.x = x;
-			btn.y = y;
-			return btn;
-		}
-		
 		override protected function initialize():void
 		{
 			super.initialize();
@@ -175,11 +154,30 @@ package com.framework.view.comps
 			super.dispose();
 		}
 		
-		public static function create(style:String):LtTabBtn
+		/**
+		 * 创建 LtTabBtn
+		 * @param parentObj 父类
+		 * @param styleName 文理名字
+		 * @param label 按钮显示文字
+		 * @return
+		 */
+		public static function createBtn(parent:DisplayObjectContainer, styleName:String = null,
+										 label:String = "", wid:int = 100, hei:int = 86, x:Number = 0, y:Number = 0):LtTabBtn
 		{
-			var button:LtTabBtn = new LtTabBtn();
-			button.nameList.add(style);
-			return button;
+			var btn:LtTabBtn = create(styleName, label, wid, hei, x, y);
+			return btn;
+		}
+		
+		public static function create(styleName:String = null, label:String = "", wid:int = 100, hei:int = 86, x:Number = 0, y:Number = 0):LtTabBtn
+		{
+			var btn:LtTabBtn = new LtTabBtn();
+			btn.nameList.add(styleName ? styleName : StyleName.BTN_MAINUI_TAB2);
+			btn.label = label;
+			btn.width = wid;
+			btn.height = hei;
+			btn.x = x;
+			btn.y = y;
+			return btn;
 		}
 		
 		public function setLabel(value:String):LtTabBtn

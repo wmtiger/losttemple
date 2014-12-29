@@ -9,7 +9,8 @@ package com.framework.view.comps
 	public class LtTabBar extends TabBar
 	{
 		public var buttonStyles:Array;
-		public var buttonCountNames:Array;
+		public var buttons:Array;
+//		public var buttonCountNames:Array;
 		private var _theName:String;
 		
 		/**
@@ -75,17 +76,24 @@ package com.framework.view.comps
 				if (buttonStyles) {
 					tab = createTabByStyle(item, buttonStyles[i]);
 				} else {
-					if(i == 0)
+					if(buttons)
 					{
-						var tab:ToggleButton = this.activeFirstTab = this.createFirstTab(item);
-					}
-					else if(i == lastItemIndex)
-					{
-						tab = this.activeLastTab = this.createLastTab(item);
+						tab = createTabByButtons(item, buttons[i]);
 					}
 					else
 					{
-						tab = this.createTab(item);
+						if(i == 0)
+						{
+							var tab:ToggleButton = this.activeFirstTab = this.createFirstTab(item);
+						}
+						else if(i == lastItemIndex)
+						{
+							tab = this.activeLastTab = this.createLastTab(item);
+						}
+						else
+						{
+							tab = this.createTab(item);
+						}
 					}
 				}
 				this.toggleGroup.addItem(tab);
@@ -111,6 +119,14 @@ package com.framework.view.comps
 				this._ignoreSelectionChanges = oldIgnoreSelectionChanges;
 			}
 			dispatchEventWith(Event.COMPLETE);
+		}
+		
+		protected function createTabByButtons(item:Object, btn:ToggleButton):ToggleButton
+		{
+			btn.isToggle = true;
+//			btn['data'] = item;
+			this.addChild(btn);
+			return btn;
 		}
 		
 		public function getAllBtns():Vector.<ToggleButton>
@@ -146,13 +162,13 @@ package com.framework.view.comps
 		override protected function refreshTabStyles():void
 		{
 			super.refreshTabStyles();
-			
+			/*
 			const itemCount:int = this._dataProvider ? this._dataProvider.length : 0;
 			for(var i:int = 0; i < itemCount; i++)
 			{
 				var item:Object = this._dataProvider.getItemAt(i);
 				var button:ToggleButton = this.activeTabs[i];
-				/*
+				
 				var theName:String;
 				if (buttonCountNames) {
 					theName = buttonCountNames[i];
@@ -177,8 +193,8 @@ package com.framework.view.comps
 							button.addChild(countTip);
 						}
 					}
-				}*/
-			}
+				}
+			}*/
 		}
 		
 		public function refreshCount():void {
