@@ -4,8 +4,8 @@ package com.framework.view.ui.base
 	
 	public class GamePanel extends FeathersControl
 	{
-		private var _w:int;
-		private var _h:int;
+		protected var _w:int;
+		protected var _h:int;
 		
 		public function GamePanel(w:int, h:int)
 		{

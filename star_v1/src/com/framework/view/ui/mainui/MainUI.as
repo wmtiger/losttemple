@@ -6,8 +6,9 @@ package com.framework.view.ui.mainui
 	import com.framework.view.mediator.mainui.MainUIMediator;
 	import com.framework.view.ui.base.GamePanel;
 	import com.framework.view.ui.base.GameWnd;
-	import com.framework.view.ui.home.HomePanel;
-	import com.framework.view.ui.soul.SoulPanel;
+	import com.framework.view.ui.mainui.battle.BattlePanel;
+	import com.framework.view.ui.mainui.home.HomePanel;
+	import com.framework.view.ui.mainui.soul.SoulPanel;
 	import com.losttemple.assets.Assets;
 	import com.losttemple.assets.themes.StyleName;
 	import com.losttemple.utils.Scale9BatchUtil;
@@ -31,6 +32,7 @@ package com.framework.view.ui.mainui
 		
 		private var _homePanel:HomePanel;
 		private var _soulPanel:SoulPanel;
+		private var _battlePanel:BattlePanel;
 		
 		public function MainUI()
 		{
@@ -92,11 +94,11 @@ package com.framework.view.ui.mainui
 				if(except && except == panel)
 					continue;
 				else
-					_container.removeChild(panel);
+					_container.removeChild(panel);// 此处不能dispose
 			}
 		}
 		
-		protected function showHomePanel():void
+		public function showHomePanel():void
 		{
 			if(_homePanel == null)
 				_homePanel = new HomePanel(STLConstant.StageWidth, STLConstant.StageHeight - 86);
@@ -105,13 +107,22 @@ package com.framework.view.ui.mainui
 			clearPanels(_homePanel);
 		}
 		
-		protected function showSoulPanel():void
+		public function showSoulPanel():void
 		{
 			if(_soulPanel == null)
 				_soulPanel = new SoulPanel(STLConstant.StageWidth, STLConstant.StageHeight - 86);
 			if(!_container.contains(_soulPanel))
 				_container.addChild(_soulPanel);
 			clearPanels(_soulPanel);
+		}
+		
+		public function showBattlePanel():void
+		{
+			if(_battlePanel == null)
+				_battlePanel = new BattlePanel(STLConstant.StageWidth, STLConstant.StageHeight - 86);
+			if(!_container.contains(_battlePanel))
+				_container.addChild(_battlePanel);
+			clearPanels(_battlePanel);
 		}
 		
 		private function onChangeTab(e:Event):void
@@ -127,6 +138,11 @@ package com.framework.view.ui.mainui
 				case SOUL_WND:
 				{
 					showSoulPanel();
+					break;
+				}
+				case BATTLE_WND:
+				{
+					showBattlePanel();
 					break;
 				}
 					
