@@ -13,7 +13,6 @@ package com.framework.view.ui.mainui.battle
 	
 	public class BattlePanel extends GamePanel
 	{
-		private var _playerInfo:PlayerInfoBar;
 		
 		public function BattlePanel(w:int, h:int)
 		{
@@ -24,11 +23,9 @@ package com.framework.view.ui.mainui.battle
 		{
 			var bg:ImageLoader = new ImageLoader();
 			bg.addEventListener(Event.COMPLETE, onCompleteLdr);
-			bg.source = AssetsUtil.getImgsUrlByName("bigpic/map.png");
+			bg.source = AssetsUtil.getImgsUrlByName("bigpic/map1.jpg");
 			addChild(bg);
 			
-			_playerInfo = new PlayerInfoBar(_w, 105);
-			addChild(_playerInfo);
 		}
 		
 		private function onCompleteLdr(e:Event):void

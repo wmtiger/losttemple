@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:a62f2084b8d408bf965bdd78aa2ed9df:1/1$ -->
+<TextureAtlas imagePath="ui.png">
+    <SubTexture name="btn_add_small" x="484" y="21" width="19" height="20"/>
+    <SubTexture name="icon_crystal" x="152" y="287" width="36" height="35"/>
+    <SubTexture name="icon_gold" x="190" y="287" width="38" height="33"/>
+    <SubTexture name="ui_battle_pic1" x="182" y="324" width="60" height="60"/>
+    <SubTexture name="ui_battle_pic2" x="244" y="322" width="58" height="54"/>
+    <SubTexture name="ui_btn2_normal" x="92" y="324" width="88" height="86"/>
+    <SubTexture name="ui_btn2_selected" x="2" y="412" width="88" height="86"/>
+    <SubTexture name="ui_btn_light_normal" x="34" y="109" width="110" height="92"/>
+    <SubTexture name="ui_btn_light_selected" x="2" y="230" width="110" height="92"/>
+    <SubTexture name="ui_btn_normal" x="2" y="324" width="88" height="86"/>
+    <SubTexture name="ui_btn_selected" x="92" y="412" width="86" height="86" frameX="-1" frameY="0" frameWidth="88" frameHeight="86"/>
+    <SubTexture name="ui_btn_to_right_normal" x="114" y="203" width="120" height="82"/>
+    <SubTexture name="ui_btn_to_right_selected" x="180" y="412" width="120" height="82"/>
+    <SubTexture name="ui_head_bar_bg" x="2" y="2" width="480" height="105"/>
+    <SubTexture name="ui_progress_bar_red" x="484" y="2" width="26" height="17"/>
+    <SubTexture name="ui_star" x="114" y="287" width="36" height="35"/>
+    <SubTexture name="ui_star_bg" x="230" y="287" width="33" height="33"/>
+    <SubTexture name="ui_tab_bg" x="2" y="109" width="30" height="119"/>
+</TextureAtlas>

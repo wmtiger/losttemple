@@ -7,6 +7,7 @@ package com.framework.view.ui.mainui
 	import com.framework.view.ui.base.GamePanel;
 	import com.framework.view.ui.base.GameWnd;
 	import com.framework.view.ui.mainui.battle.BattlePanel;
+	import com.framework.view.ui.mainui.comps.PlayerInfoBar;
 	import com.framework.view.ui.mainui.home.HomePanel;
 	import com.framework.view.ui.mainui.soul.SoulPanel;
 	import com.losttemple.assets.Assets;
@@ -28,7 +29,8 @@ package com.framework.view.ui.mainui
 		public static const MAP_WND:int = 3;
 		public static const SHOP_WND:int = 4;
 		
-		private var _container:Sprite;
+		private var _playerInfo:PlayerInfoBar;
+		private var _panelContainer:Sprite;
 		
 		private var _homePanel:HomePanel;
 		private var _soulPanel:SoulPanel;
@@ -41,8 +43,11 @@ package com.framework.view.ui.mainui
 		
 		override protected function initialize():void
 		{
-			_container = new Sprite();
-			addChild(_container);
+			_panelContainer = new Sprite();
+			addChild(_panelContainer);
+			
+			_playerInfo = new PlayerInfoBar(STLConstant.StageWidth, 105);
+			addChild(_playerInfo);
 			
 			addChild(Scale9BatchUtil.getScale9Batch(Assets.instance.ui_tab_bg_S9Texture, STLConstant.StageWidth, 92, null, 0, STLConstant.StageHeight - 92));
 			
@@ -88,13 +93,13 @@ package com.framework.view.ui.mainui
 			var n:int;
 			if(except)
 				n = 1;
-			while(_container.numChildren > n)
+			while(_panelContainer.numChildren > n)
 			{
-				var panel:GamePanel = _container.getChildAt(0) as GamePanel;
+				var panel:GamePanel = _panelContainer.getChildAt(0) as GamePanel;
 				if(except && except == panel)
 					continue;
 				else
-					_container.removeChild(panel);// 此处不能dispose
+					_panelContainer.removeChild(panel);// 此处不能dispose
 			}
 		}
 		
@@ -102,8 +107,8 @@ package com.framework.view.ui.mainui
 		{
 			if(_homePanel == null)
 				_homePanel = new HomePanel(STLConstant.StageWidth, STLConstant.StageHeight - 86);
-			if(!_container.contains(_homePanel))
-				_container.addChild(_homePanel);
+			if(!_panelContainer.contains(_homePanel))
+				_panelContainer.addChild(_homePanel);
 			clearPanels(_homePanel);
 		}
 		
@@ -111,8 +116,8 @@ package com.framework.view.ui.mainui
 		{
 			if(_soulPanel == null)
 				_soulPanel = new SoulPanel(STLConstant.StageWidth, STLConstant.StageHeight - 86);
-			if(!_container.contains(_soulPanel))
-				_container.addChild(_soulPanel);
+			if(!_panelContainer.contains(_soulPanel))
+				_panelContainer.addChild(_soulPanel);
 			clearPanels(_soulPanel);
 		}
 		
@@ -120,8 +125,8 @@ package com.framework.view.ui.mainui
 		{
 			if(_battlePanel == null)
 				_battlePanel = new BattlePanel(STLConstant.StageWidth, STLConstant.StageHeight - 86);
-			if(!_container.contains(_battlePanel))
-				_container.addChild(_battlePanel);
+			if(!_panelContainer.contains(_battlePanel))
+				_panelContainer.addChild(_battlePanel);
 			clearPanels(_battlePanel);
 		}
 		

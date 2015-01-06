@@ -24,8 +24,6 @@ package com.framework.view.ui.mainui.home
 			bg.source = AssetsUtil.getImgsUrlByName("bigpic/aa.jpg");
 			addChild(bg);
 			
-			_playerInfo = new PlayerInfoBar(_w, 105);
-			addChild(_playerInfo);
 		}
 		
 		private function onCompleteLdr(e:Event):void
