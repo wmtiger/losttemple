@@ -28,6 +28,9 @@ package com.framework.view.ui.mainui
 		public static const BATTLE_WND:int = 2;
 		public static const MAP_WND:int = 3;
 		public static const SHOP_WND:int = 4;
+
+		public static const UI_BTN_BAR_HEIGHT:int = 86;
+		public static const UI_PLAYER_BAR_HEIGHT:int = 100;
 		
 		private var _playerInfo:PlayerInfoBar;
 		private var _panelContainer:Sprite;
