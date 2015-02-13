@@ -1,9 +1,8 @@
 package com.losttemple.assets.themes
 {
-	import com.fw.view.comps.LtBtn;
-	import com.fw.view.comps.LtLabel;
-	import com.fw.view.comps.LtTabBar;
-	import com.fw.view.comps.LtTabBtn;
+	import com.fw.view.comps.WmBtn;
+	import com.fw.view.comps.WmLabel;
+	import com.fw.view.comps.WmTabBtn;
 	import com.losttemple.assets.Assets;
 	
 	import flash.text.Font;
@@ -95,24 +94,24 @@ package com.losttemple.assets.themes
 			Font.registerFont(FZ_FONT_CLS);
 			
 			// 按钮风格
-			setInitializerForClass(LtBtn, ltBtnDefInit);
-			setInitializerForClass(LtBtn, ltBtnMainTabInit, StyleName.BTN_MAINUI_TAB);
-			setInitializerForClass(LtTabBtn, ltTabBtnMainTabInit, StyleName.BTN_MAINUI_TAB2);
+			setInitializerForClass(WmBtn, ltBtnDefInit);
+			setInitializerForClass(WmBtn, ltBtnMainTabInit, StyleName.BTN_MAINUI_TAB);
+			setInitializerForClass(WmTabBtn, ltTabBtnMainTabInit, StyleName.BTN_MAINUI_TAB2);
 			
 			// 文本风格
-			setInitializerForClass(LtLabel, ltLabelDefInit, StyleName.LABEL_DEF);
+			setInitializerForClass(WmLabel, ltLabelDefInit, StyleName.LABEL_DEF);
 			
 			// Tabbar风格
 			setInitializerForClass(TabBar, tabDefInit, StyleName.TAB_BAR_DEF);
 		}
 		
-		private function ltLabelDefInit(label:LtLabel):void
+		private function ltLabelDefInit(label:WmLabel):void
 		{
 			label.format = Assets.instance.defTextFmt;
 			label.nativeFilters = [StyleValue.DROPSHADOW_BLACK];
 		}
 		
-		private function ltTabBtnMainTabInit(btn:LtTabBtn):void
+		private function ltTabBtnMainTabInit(btn:WmTabBtn):void
 		{
 			btn.defaultSkin = new Scale9Image(Assets.instance.ui_btn2_normal_S9Texture);
 			btn.downSkin = new Scale9Image(Assets.instance.ui_btn2_selected_S9Texture);
@@ -121,7 +120,7 @@ package com.losttemple.assets.themes
 			btn.btnLabelStyle = StyleName.LABEL_DEF;
 		}
 		
-		private function ltBtnMainTabInit(btn:LtBtn):void
+		private function ltBtnMainTabInit(btn:WmBtn):void
 		{
 			btn.defaultSkin = new Scale9Image(Assets.instance.ui_btn2_normal_S9Texture);
 			btn.downSkin = null
@@ -131,7 +130,7 @@ package com.losttemple.assets.themes
 			//btn.labelOffsetY = -5;
 		}
 		
-		private function ltBtnDefInit(btn:LtBtn):void
+		private function ltBtnDefInit(btn:WmBtn):void
 		{
 			btn.defaultSkin = new Scale9Image(Assets.instance.ui_btn2_normal_S9Texture);
 			btn.downSkin = null
@@ -144,7 +143,7 @@ package com.losttemple.assets.themes
 			tab.distributeTabSizes = false;
 			tab.tabFactory = function():ToggleButton
 			{
-				var tab:LtTabBtn = new LtTabBtn();
+				var tab:WmTabBtn = new WmTabBtn();
 				tab.nameList.add(StyleName.BTN_MAINUI_TAB2);
 				return tab;
 			};

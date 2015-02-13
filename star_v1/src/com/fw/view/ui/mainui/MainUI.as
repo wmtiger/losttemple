@@ -2,8 +2,8 @@ package com.fw.view.ui.mainui
 {
 	import com.engine.utils.Scale9BatchUtil;
 	import com.fw.LostFacade;
-	import com.fw.view.comps.LtTabBtn;
 	import com.fw.view.comps.WmTabBar;
+	import com.fw.view.comps.WmTabBtn;
 	import com.fw.view.comps.base.GamePanel;
 	import com.fw.view.comps.base.GameWnd;
 	import com.fw.view.mediator.mainui.MainUIMediator;
@@ -59,23 +59,23 @@ package com.fw.view.ui.mainui
 			var cellWid:int = STLConstant.StageWidth / 5;
 			var offestW:int = cellWid * 0.1;
 			
-			var homeBtn:LtTabBtn = LtTabBtn.create(StyleName.BTN_MAINUI_TAB2);
-			homeBtn = LtTabBtn.create(StyleName.BTN_MAINUI_TAB2, "HOME", cellWid - offestW);
+			var homeBtn:WmTabBtn = WmTabBtn.create(StyleName.BTN_MAINUI_TAB2);
+			homeBtn = WmTabBtn.create(StyleName.BTN_MAINUI_TAB2, "HOME", cellWid - offestW);
 			tabs.push(homeBtn);
 			
-			var soulBtn:LtTabBtn = LtTabBtn.create(StyleName.BTN_MAINUI_TAB2, "SOUL", homeBtn.width);
+			var soulBtn:WmTabBtn = WmTabBtn.create(StyleName.BTN_MAINUI_TAB2, "SOUL", homeBtn.width);
 			soulBtn.x = homeBtn.x + homeBtn.width;
 			tabs.push(soulBtn);
 			
-			var battleBtn:LtTabBtn = LtTabBtn.create(StyleName.BTN_MAINUI_TAB2, "BATTLE", STLConstant.StageWidth - homeBtn.width * 4);
+			var battleBtn:WmTabBtn = WmTabBtn.create(StyleName.BTN_MAINUI_TAB2, "BATTLE", STLConstant.StageWidth - homeBtn.width * 4);
 			battleBtn.x = soulBtn.x + soulBtn.width;
 			tabs.push(battleBtn);
 			
-			var mapBtn:LtTabBtn = LtTabBtn.create(StyleName.BTN_MAINUI_TAB2, "MAP", homeBtn.width);
+			var mapBtn:WmTabBtn = WmTabBtn.create(StyleName.BTN_MAINUI_TAB2, "MAP", homeBtn.width);
 			mapBtn.x = battleBtn.x + battleBtn.width;
 			tabs.push(mapBtn);
 			
-			var shopBtn:LtTabBtn = LtTabBtn.create(StyleName.BTN_MAINUI_TAB2, "SHOP", homeBtn.width);
+			var shopBtn:WmTabBtn = WmTabBtn.create(StyleName.BTN_MAINUI_TAB2, "SHOP", homeBtn.width);
 			shopBtn.x = mapBtn.x + mapBtn.width;
 			tabs.push(shopBtn);
 			
