@@ -1,9 +1,9 @@
 package com.losttemple.assets.themes
 {
-	import com.framework.view.comps.LtBtn;
-	import com.framework.view.comps.LtLabel;
-	import com.framework.view.comps.LtTabBar;
-	import com.framework.view.comps.LtTabBtn;
+	import com.fw.view.comps.LtBtn;
+	import com.fw.view.comps.LtLabel;
+	import com.fw.view.comps.LtTabBar;
+	import com.fw.view.comps.LtTabBtn;
 	import com.losttemple.assets.Assets;
 	
 	import flash.text.Font;

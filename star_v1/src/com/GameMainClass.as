@@ -1,7 +1,7 @@
 package com
 {
-	import com.framework.AppFacade;
-	import com.framework.view.ui.loading.FirstLoading;
+	import com.fw.LostFacade;
+	import com.fw.view.ui.loading.FirstLoading;
 	import com.losttemple.assets.Assets;
 	import com.losttemple.assets.themes.LosTempTheme;
 	import com.losttemple.mgr.GameMgr;
@@ -70,7 +70,7 @@ package com
 			GameMgr.themeMgr.initialize();
 			
 			// 初始化游戏界面
-			AppFacade.instance.startUp(this);
+			LostFacade.instance.startUp(this);
 		}
 		
 	}

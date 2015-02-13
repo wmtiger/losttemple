@@ -1,6 +1,6 @@
 package com.losttemple.templates
 {
-	import com.losttemple.templates.base.ITemplate;
+	import com.engine.templates.ITemplate;
 	import com.losttemple.templates.base.Template;
 
 	public class RaceTemplate extends Template

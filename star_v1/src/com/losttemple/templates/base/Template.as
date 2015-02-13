@@ -1,5 +1,12 @@
 package com.losttemple.templates.base
 {
+	import com.engine.templates.ITemplate;
+	import com.engine.utils.CSVParser;
+	import com.losttemple.templates.AvatarTemplate;
+	import com.losttemple.templates.RaceTemplate;
+	import com.losttemple.templates.SkillTemplate;
+	import com.losttemple.utils.AssetsUtil;
+	
 	import flash.events.Event;
 	import flash.filesystem.File;
 	import flash.filesystem.FileMode;
@@ -8,12 +15,6 @@ package com.losttemple.templates.base
 	
 	import starling.core.Starling;
 	import starling.events.Event;
-	
-	import com.losttemple.utils.AssetsUtil;
-	import com.losttemple.utils.CSVParser;
-	import com.losttemple.templates.AvatarTemplate;
-	import com.losttemple.templates.RaceTemplate;
-	import com.losttemple.templates.SkillTemplate;
 
 	public class Template implements ITemplate
 	{

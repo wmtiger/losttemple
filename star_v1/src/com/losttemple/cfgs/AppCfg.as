@@ -7,7 +7,7 @@ package com.losttemple.cfgs
 		}
 		
 		/**
-		 * RUN_TYPE 默认是pc，因为在pc上调试(目前支持pc上调试安卓的HTC G11)，发布的时候，在编译参数中改为 ipa 或者 apk
+		 * RUN_TYPE 默认是pc，因为在pc上调试(目前支持pc上调试安卓的HTC G11)，发布的时候，在编译参数中改为 ios 或者 adr
 		 * 这里是为了获取对应资源用的
 		 */		
 		public static const RUN_TYPE:String = CONFIG::runtype + "";
