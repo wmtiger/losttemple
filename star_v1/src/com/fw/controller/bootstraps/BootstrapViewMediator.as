@@ -4,26 +4,29 @@ package com.fw.controller.bootstraps
 	import com.fw.MediatorConst;
 	import com.fw.view.AppMediator;
 	
-	import org.puremvc.as3.interfaces.INotification;
-	import org.puremvc.as3.patterns.command.SimpleCommand;
+	import org.puremvc.as3.interfaces.IFacade;
+	import org.puremvc.as3.patterns.facade.Facade;
 	
-	public class BootstrapViewMediator extends SimpleCommand
+	import starling.display.DisplayObjectContainer;
+	
+	public class BootstrapViewMediator
 	{
 		public function BootstrapViewMediator()
 		{
 			super();
 		}
 		
-		override public function execute(notice:INotification):void
+		protected static function get facade():IFacade
+		{
+			return Facade.getInstance();
+		}
+		
+		public static function initCmd(view:DisplayObjectContainer):void
 		{
 			//游戏主舞台
+			facade.registerMediator(new AppMediator(view as GameMainClass));
 			
-//			var appStage:LinkUpGame = notice.getBody() as LinkUpGame;
-			facade.registerMediator(new AppMediator(notice.getBody() as GameMainClass));
-			//
-			//sendNotification(ApplicationConstants.REQUEST_LOGIN, reqLogin);
-			sendNotification(MediatorConst.SHOW_MAIN_UI);
-			
+			facade.sendNotification(MediatorConst.SHOW_MAIN_UI);
 		}
 	}
 }

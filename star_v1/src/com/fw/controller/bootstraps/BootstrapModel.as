@@ -1,18 +1,23 @@
 package com.fw.controller.bootstraps
 {
-	import org.puremvc.as3.interfaces.INotification;
-	import org.puremvc.as3.patterns.command.SimpleCommand;
+	import org.puremvc.as3.interfaces.IFacade;
+	import org.puremvc.as3.patterns.facade.Facade;
 	
-	public class BootstrapModel extends SimpleCommand
+	public class BootstrapModel
 	{
 		public function BootstrapModel()
 		{
 			super();
 		}
 		
-		override public function execute(notice:INotification):void
+		protected static function get facade():IFacade
 		{
-//			facade.registerProxy(new LevelProxy());
+			return Facade.getInstance();
+		}
+		
+		public static function initCmd():void
+		{
+			//			facade.registerProxy(new LevelProxy());
 		}
 	}
 }
