@@ -1,5 +1,7 @@
 package com.fw.view.ui.mainui.battle.scene
 {
+	import com.fw.view.comps.scalescene.BaseScaleScene;
+	
 	import feathers.controls.ImageLoader;
 
 	public class BattleMapScene extends BaseScaleScene
