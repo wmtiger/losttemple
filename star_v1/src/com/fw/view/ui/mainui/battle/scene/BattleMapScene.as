@@ -1,7 +1,5 @@
 package com.fw.view.ui.mainui.battle.scene
 {
-	import com.fw.view.ui.mainui.MainUI;
-	
 	import feathers.controls.ImageLoader;
 
 	public class BattleMapScene extends BaseScaleScene
@@ -9,19 +7,22 @@ package com.fw.view.ui.mainui.battle.scene
 		
 		public function BattleMapScene()
 		{
-			maxwidth=1800;
-			maxheight=1871;
 			super();
+		}
+		
+		override public function get maxheight():int
+		{
+			return 1871;
+		}
+		
+		override public function get maxwidth():int
+		{
+			return 1800;
 		}
 		
 		override protected function setScenePosition():void
 		{
-			
-		}
-		
-		override public function get viewHeight():Number
-		{
-			return stage.stageHeight - MainUI.UI_BTN_BAR_HEIGHT - MainUI.UI_PLAYER_BAR_HEIGHT;
+			// 不需要这个，把这个覆盖为空
 		}
 		
 		public function drawBg(src:String):void

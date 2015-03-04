@@ -41,8 +41,8 @@ package com.fw.view.ui.mainui.battle.scene
 		
 		protected var ismoveitem:Boolean;
 		protected var maxscale:Number = 1.5;
-		protected var maxwidth:int=1728;//游戏最大显示宽
-		protected var maxheight:int=2304;//游戏最大显示高
+		protected var _maxwidth:int=2800;//游戏最大显示宽
+		protected var _maxheight:int=2871;//游戏最大显示高
 		protected var isaddjuggler:Boolean;
 		
 		public var minscale:Number;
@@ -54,10 +54,19 @@ package com.fw.view.ui.mainui.battle.scene
 			addEventListener(Event.ADDED_TO_STAGE,addstage);
 		}
 
+		public function get maxheight():int
+		{
+			return _maxheight;
+		}
+
+		public function get maxwidth():int
+		{
+			return _maxwidth;
+		}
+
 		protected function set beginTouch(value:Boolean):void
 		{
 			_beginTouch = value;
-			
 			
 			if(!isaddjuggler)
 			{
@@ -467,7 +476,7 @@ package com.fw.view.ui.mainui.battle.scene
 		protected function checkXY(checkComplete:Boolean = true):void
 		{
 			var gamewidth:Number = viewWidth;
-			var gameheight:Number = stage.stageHeight;
+			var gameheight:Number = viewHeight;
 			if(maxwidth*scaleX<gamewidth)
 				x = (gamewidth-maxwidth*scaleX)*.5
 			else if(x>0)
