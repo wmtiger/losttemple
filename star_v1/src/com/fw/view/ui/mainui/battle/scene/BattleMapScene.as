@@ -2,14 +2,17 @@ package com.fw.view.ui.mainui.battle.scene
 {
 	import com.fw.view.comps.scalescene.BaseScaleScene;
 	import com.fw.view.ui.mainui.MainUI;
+	import com.fw.view.ui.mainui.battle.IBattleCloud;
 	
 	import feathers.controls.ImageLoader;
 
 	public class BattleMapScene extends BaseScaleScene
 	{
+		private var _battleCloud:IBattleCloud;
 		
-		public function BattleMapScene()
+		public function BattleMapScene(battleCloud:IBattleCloud)
 		{
+			_battleCloud = battleCloud;
 			super();
 		}
 		
@@ -33,7 +36,7 @@ package com.fw.view.ui.mainui.battle.scene
 			var bg:ImageLoader = new ImageLoader();
 			bg.source = src;
 			addChild(bg);
-			showAtPoint((stage.stageWidth-maxwidth*scaleX) * 0.43, (stage.stageHeight-maxheight*scaleY) * 0.4);
+			showAtPoint((stage.stageWidth-maxwidth*scaleX) * 0.45, (stage.stageHeight-maxheight*scaleY) * 0.62);
 		}
 		
 		override protected function setViewRect():void
@@ -46,16 +49,15 @@ package com.fw.view.ui.mainui.battle.scene
 		
 		override protected function checkXY(checkComplete:Boolean = true):void
 		{
-			var gamewidth:Number = viewWidth;
-			var gameheight:Number = viewHeight;
-			if(maxwidth*scaleX<gamewidth)
-				x = (gamewidth-maxwidth*scaleX)*.5
-			else if(x>0)
-				x = 0;
-			else if(x<gamewidth-maxwidth*scaleX)
-				x = gamewidth-maxwidth*scaleX;
+			if(x > _viewRect.x)
+			{
+				x = _viewRect.x;
+			}
+			if(x < (_viewRect.x + _viewRect.width) - maxwidth*scaleX)
+			{
+				x = (_viewRect.x + _viewRect.width) - maxwidth*scaleX;
+			}
 			
-			trace('==',y,_viewRect.y);
 			if(y > _viewRect.y)
 			{
 				y = _viewRect.y;
@@ -64,23 +66,8 @@ package com.fw.view.ui.mainui.battle.scene
 			{
 				y = (_viewRect.y + _viewRect.height) - maxheight*scaleX;
 			}
-			trace(y, (_viewRect.y + _viewRect.height) - maxheight*scaleX);
-//			if(maxheight*scaleX<gameheight)
-//			if(maxheight*scaleX<(_viewRect.y + _viewRect.height))
-//			{
-//				trace("aaaa");
-//				y = (playerH + gameheight-maxheight*scaleX)*.5
-//			}
-//			else if(y>_viewRect.y)
-//			{
-//				trace("bbb");
-//				y =  _viewRect.y;
-//			}
-//			else if(y<(_viewRect.y + _viewRect.height)-maxheight*scaleX)
-//			{
-//				trace("ccc");
-//				y = (_viewRect.y + _viewRect.height)-maxheight*scaleX - tabH;
-//			}
+			
+			_battleCloud.updateCloudLayer();
 			
 			if(checkComplete)
 				moveComplete();
