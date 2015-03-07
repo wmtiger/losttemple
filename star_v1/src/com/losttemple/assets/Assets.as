@@ -1,12 +1,11 @@
 package com.losttemple.assets
 {
-	import com.losttemple.assets.themes.StyleValue;
+	import com.fw.view.comps.style.StyleDef;
 	
 	import flash.geom.Rectangle;
 	import flash.text.TextFormat;
 	import flash.text.TextFormatAlign;
 	
-	import feathers.textures.Scale3Textures;
 	import feathers.textures.Scale9Textures;
 	
 	import starling.textures.Texture;
@@ -30,6 +29,8 @@ package com.losttemple.assets
 		public var ui_btn2_selected_S9Texture:Scale9Textures;
 		public var ui_tab_bg_Texture:Texture;
 		public var ui_tab_bg_S9Texture:Scale9Textures;
+		public var ui_wnd_back_normal_Texture:Texture;
+		public var ui_wnd_back_selected_Texture:Texture;
 		
 		public function Assets()
 		{
@@ -42,7 +43,7 @@ package com.losttemple.assets
 		
 		private function initTextformat():void
 		{
-			defTextFmt = new TextFormat(StyleValue.FONT_NAME_FZY4, StyleValue.FONT_SIZE_16, StyleValue.FONT_COLOR_WHITE,
+			defTextFmt = new TextFormat(StyleDef.FONT_NAME_FZY4, StyleDef.FONT_SIZE_16, StyleDef.FONT_COLOR_WHITE,
 				true, false, false, "", "", TextFormatAlign.LEFT, 0, 0, 0 , 0);
 		}
 		
@@ -56,6 +57,8 @@ package com.losttemple.assets
 			ui_btn2_selected_S9Texture = new Scale9Textures(ui_btn2_selected_Texture, new Rectangle(30, 0, 30, 86));
 			ui_tab_bg_Texture = assetMgr.getTexture("ui_tab_bg");
 			ui_tab_bg_S9Texture = new Scale9Textures(ui_tab_bg_Texture, new Rectangle(10, 20, 6, 6));
+			ui_wnd_back_normal_Texture = assetMgr.getTexture("ui_btn_to_right_normal");
+			ui_wnd_back_selected_Texture = assetMgr.getTexture("ui_btn_to_right_selected");
 		}
 		
 		public function init():void

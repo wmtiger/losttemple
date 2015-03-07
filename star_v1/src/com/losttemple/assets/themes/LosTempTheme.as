@@ -3,6 +3,7 @@ package com.losttemple.assets.themes
 	import com.fw.view.comps.WmBtn;
 	import com.fw.view.comps.WmLabel;
 	import com.fw.view.comps.WmTabBtn;
+	import com.fw.view.comps.style.StyleDef;
 	import com.losttemple.assets.Assets;
 	
 	import flash.text.Font;
@@ -16,6 +17,7 @@ package com.losttemple.assets.themes
 	
 	import starling.core.Starling;
 	import starling.display.DisplayObjectContainer;
+	import starling.display.Image;
 	
 	public class LosTempTheme extends DisplayListWatcher
 	{
@@ -96,10 +98,11 @@ package com.losttemple.assets.themes
 			// 按钮风格
 			setInitializerForClass(WmBtn, ltBtnDefInit);
 			setInitializerForClass(WmBtn, ltBtnMainTabInit, StyleName.BTN_MAINUI_TAB);
+			setInitializerForClass(WmBtn, ltBtnWndBackInit, StyleName.BTN_WND_BACK);
 			setInitializerForClass(WmTabBtn, ltTabBtnMainTabInit, StyleName.BTN_MAINUI_TAB2);
 			
 			// 文本风格
-			setInitializerForClass(WmLabel, ltLabelDefInit, StyleName.LABEL_DEF);
+			setInitializerForClass(WmLabel, ltLabelDefInit, StyleDef.LABEL_DEF);
 			
 			// Tabbar风格
 			setInitializerForClass(TabBar, tabDefInit, StyleName.TAB_BAR_DEF);
@@ -108,7 +111,7 @@ package com.losttemple.assets.themes
 		private function ltLabelDefInit(label:WmLabel):void
 		{
 			label.format = Assets.instance.defTextFmt;
-			label.nativeFilters = [StyleValue.DROPSHADOW_BLACK];
+			label.nativeFilters = [StyleDef.DROPSHADOW_BLACK];
 		}
 		
 		private function ltTabBtnMainTabInit(btn:WmTabBtn):void
@@ -117,7 +120,22 @@ package com.losttemple.assets.themes
 			btn.downSkin = new Scale9Image(Assets.instance.ui_btn2_selected_S9Texture);
 			btn.defaultSelectedSkin = new Scale9Image(Assets.instance.ui_btn2_selected_S9Texture);
 			btn.disabledSkin = null;
-			btn.btnLabelStyle = StyleName.LABEL_DEF;
+			btn.btnLabelStyle = StyleDef.LABEL_DEF;
+		}
+		
+		private function ltBtnWndBackInit(btn:WmBtn):void
+		{
+			var normal:Image = new Image(Assets.instance.ui_wnd_back_normal_Texture);
+			var selected:Image = new Image(Assets.instance.ui_wnd_back_selected_Texture);
+//			selected.pivotX = selected.width / 2;
+			normal.scaleX = selected.scaleX = -1;
+			normal.x = selected.x = normal.width;
+			btn.defaultSkin = normal;
+			btn.downSkin = selected;
+			btn.disabledSkin = null
+			btn.btnLabelStyle = StyleDef.LABEL_DEF;
+			btn.scaleForDownSkin = true;
+			//btn.labelOffsetY = -5;
 		}
 		
 		private function ltBtnMainTabInit(btn:WmBtn):void
@@ -125,7 +143,7 @@ package com.losttemple.assets.themes
 			btn.defaultSkin = new Scale9Image(Assets.instance.ui_btn2_normal_S9Texture);
 			btn.downSkin = null
 			btn.disabledSkin = null
-			btn.btnLabelStyle = StyleName.LABEL_DEF;
+			btn.btnLabelStyle = StyleDef.LABEL_DEF;
 			btn.scaleForDownSkin = true;
 			//btn.labelOffsetY = -5;
 		}

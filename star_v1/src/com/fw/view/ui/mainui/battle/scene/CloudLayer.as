@@ -1,6 +1,5 @@
 package com.fw.view.ui.mainui.battle.scene
 {
-	import com.gameabc.sanguo.config.template.VIPTemplate;
 	import com.losttemple.assets.Assets;
 	
 	import starling.display.Image;
@@ -13,7 +12,7 @@ package com.fw.view.ui.mainui.battle.scene
 		private var _cloudList:Array;
 		private var _w:int;
 		private var _h:int;
-		private var baseSpeed:Number = 1.5;
+		private var baseSpeed:Number = 2;
 		
 		public function CloudLayer(w:int, h:int)
 		{
@@ -27,12 +26,12 @@ package com.fw.view.ui.mainui.battle.scene
 		private function initCloud():void
 		{
 			_cloudList = [];
-			for(var i:int = 0; i < 24; i++)
+			for(var i:int = 0; i < 20; i++)
 			{
 				var img:Image = new Image(getCloudTex());
 				img.x = _w * Math.random();
 				img.y = (_h - 500) * Math.random();
-				img.scaleX = img.scaleY = Math.random() * 3 + 0.8;
+				img.scaleX = img.scaleY = Math.random() * 1.5 + 2.5;
 				img.alpha = img.scaleX / 3;
 				_cloudList[_cloudList.length] = img;
 			}
@@ -53,20 +52,28 @@ package com.fw.view.ui.mainui.battle.scene
 		private function onEf(e:Event):void
 		{
 			reset();
-			for(var i:int = 0; i < 24; i++)
+			for(var i:int = 0; i < 20; i++)
 			{
 				var img:Image = _cloudList[i] as Image;
 				img.alpha = img.scaleX / 2;
-				if(img.x > _w)
-					img.x = 0 - 400;
 				img.x += baseSpeed * (1.2 - img.alpha);
+				if(img.x > _w)
+					img.x = 0 - img.width;
 				addImage(img);
 			}
 		}
 		
 		private function getCloudTex():Texture
 		{
-			return Assets.instance.assetMgr.getTexture("cloud" + (1 +int(Math.random() * 3)));
+			var ran:int = int(Math.random() * 10);
+			var type:int = 1;
+			if(ran >= 0 && ran < 5)
+				type = 1;
+			else if(ran >= 5 && ran < 9)
+				type = 2;
+			else
+				type = 3;
+			return Assets.instance.assetMgr.getTexture("cloud" + type);
 		}
 	
 	}

@@ -5,6 +5,8 @@ package com.fw.view.ui.mainui.battle.scene
 	import com.fw.view.ui.mainui.battle.IBattleCloud;
 	
 	import feathers.controls.ImageLoader;
+	
+	import starling.events.Event;
 
 	public class BattleMapScene extends BaseScaleScene
 	{
@@ -31,12 +33,18 @@ package com.fw.view.ui.mainui.battle.scene
 			// 不需要这个，把这个覆盖为空
 		}
 		
-		public function drawBg(src:String):void
+		public function drawBg(src:String, cb:Function = null):void
 		{
 			var bg:ImageLoader = new ImageLoader();
 			bg.source = src;
+			bg.addEventListener(Event.COMPLETE, onLoaded);
 			addChild(bg);
 			showAtPoint((stage.stageWidth-maxwidth*scaleX) * 0.45, (stage.stageHeight-maxheight*scaleY) * 0.62);
+			
+			function onLoaded():void
+			{
+				cb && cb.call();
+			}
 		}
 		
 		override protected function setViewRect():void
