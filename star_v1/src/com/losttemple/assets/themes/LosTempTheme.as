@@ -18,6 +18,7 @@ package com.losttemple.assets.themes
 	import starling.core.Starling;
 	import starling.display.DisplayObjectContainer;
 	import starling.display.Image;
+	import starling.display.Sprite;
 	
 	public class LosTempTheme extends DisplayListWatcher
 	{
@@ -125,15 +126,20 @@ package com.losttemple.assets.themes
 		
 		private function ltBtnWndBackInit(btn:WmBtn):void
 		{
+			var aSpr:Sprite = new Sprite();
+			var bSpr:Sprite = new Sprite();
 			var normal:Image = new Image(Assets.instance.ui_wnd_back_normal_Texture);
 			var selected:Image = new Image(Assets.instance.ui_wnd_back_selected_Texture);
 //			selected.pivotX = selected.width / 2;
 			normal.scaleX = selected.scaleX = -1;
 			normal.x = selected.x = normal.width;
-			btn.defaultSkin = normal;
-			btn.downSkin = selected;
+			aSpr.addChild(normal);
+			bSpr.addChild(selected);
+			btn.defaultSkin = aSpr;
+			btn.downSkin = bSpr;
 			btn.disabledSkin = null
 			btn.btnLabelStyle = StyleDef.LABEL_DEF;
+			btn.labelOffsetX = 10;
 			btn.scaleForDownSkin = true;
 			//btn.labelOffsetY = -5;
 		}

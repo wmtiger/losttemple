@@ -31,6 +31,10 @@ package com.losttemple.assets
 		public var ui_tab_bg_S9Texture:Scale9Textures;
 		public var ui_wnd_back_normal_Texture:Texture;
 		public var ui_wnd_back_selected_Texture:Texture;
+		public var ui_info_bg_Texture:Texture;
+		public var ui_info_bg_S9Texture:Scale9Textures;
+		public var ui_battle_stage_info_bg_Texture:Texture;
+		public var ui_battle_stage_info_bg_S9Texture:Scale9Textures;
 		
 		public function Assets()
 		{
@@ -59,6 +63,10 @@ package com.losttemple.assets
 			ui_tab_bg_S9Texture = new Scale9Textures(ui_tab_bg_Texture, new Rectangle(10, 20, 6, 6));
 			ui_wnd_back_normal_Texture = assetMgr.getTexture("ui_btn_to_right_normal");
 			ui_wnd_back_selected_Texture = assetMgr.getTexture("ui_btn_to_right_selected");
+			ui_info_bg_Texture = assetMgr.getTexture("ui_info_bg");
+			ui_info_bg_S9Texture = new Scale9Textures(ui_info_bg_Texture, new Rectangle(20, 20, 6, 6));
+			ui_battle_stage_info_bg_Texture = assetMgr.getTexture("ui_battle_stage_info_bg");
+			ui_battle_stage_info_bg_S9Texture = new Scale9Textures(ui_battle_stage_info_bg_Texture, new Rectangle(20, 30, 6, 6));
 		}
 		
 		public function init():void

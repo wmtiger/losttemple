@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
-<!-- $TexturePacker:SmartUpdate:385d097bcaf36e5f9327569dbcc8f282:1/1$ -->
+<!-- $TexturePacker:SmartUpdate:9078156d90a4450da88d6f8dddcc1051:1/1$ -->
 <TextureAtlas imagePath="ui.png">
     <SubTexture name="btn_add_small" x="484" y="21" width="19" height="20"/>
-    <SubTexture name="cloud1" x="2" y="109" width="203" height="100"/>
-    <SubTexture name="cloud2" x="207" y="109" width="165" height="100"/>
-    <SubTexture name="cloud3" x="2" y="277" width="140" height="100"/>
-    <SubTexture name="icon_crystal" x="40" y="473" width="36" height="35"/>
-    <SubTexture name="icon_gold" x="78" y="473" width="38" height="33"/>
-    <SubTexture name="ui_battle_gate_bg" x="412" y="277" width="81" height="81"/>
-    <SubTexture name="ui_battle_pic1" x="2" y="211" width="60" height="60"/>
-    <SubTexture name="ui_battle_pic2" x="96" y="211" width="58" height="54"/>
-    <SubTexture name="ui_btn2_normal" x="226" y="365" width="88" height="86"/>
-    <SubTexture name="ui_btn2_selected" x="234" y="211" width="88" height="86"/>
-    <SubTexture name="ui_btn_light_normal" x="114" y="379" width="110" height="92"/>
-    <SubTexture name="ui_btn_light_selected" x="2" y="379" width="110" height="92"/>
-    <SubTexture name="ui_btn_normal" x="144" y="277" width="88" height="86"/>
-    <SubTexture name="ui_btn_selected" x="324" y="277" width="86" height="86" frameX="-1" frameY="0" frameWidth="88" frameHeight="86"/>
-    <SubTexture name="ui_btn_to_right_normal" x="374" y="193" width="120" height="82"/>
-    <SubTexture name="ui_btn_to_right_selected" x="374" y="109" width="120" height="82"/>
+    <SubTexture name="cloud1" x="2" y="233" width="203" height="100"/>
+    <SubTexture name="cloud2" x="60" y="109" width="165" height="100"/>
+    <SubTexture name="cloud3" x="2" y="335" width="140" height="100"/>
+    <SubTexture name="icon_crystal" x="441" y="234" width="36" height="35"/>
+    <SubTexture name="icon_gold" x="256" y="393" width="38" height="33"/>
+    <SubTexture name="ui_battle_gate_bg" x="156" y="429" width="81" height="81"/>
+    <SubTexture name="ui_battle_pic1" x="2" y="437" width="60" height="60"/>
+    <SubTexture name="ui_battle_pic2" x="96" y="437" width="58" height="54"/>
+    <SubTexture name="ui_battle_stage_info_bg" x="2" y="109" width="56" height="122"/>
+    <SubTexture name="ui_btn2_normal" x="407" y="109" width="88" height="86"/>
+    <SubTexture name="ui_btn2_selected" x="317" y="109" width="88" height="86"/>
+    <SubTexture name="ui_btn_light_normal" x="207" y="211" width="110" height="92"/>
+    <SubTexture name="ui_btn_light_selected" x="144" y="335" width="110" height="92"/>
+    <SubTexture name="ui_btn_normal" x="227" y="109" width="88" height="86"/>
+    <SubTexture name="ui_btn_selected" x="256" y="305" width="86" height="86" frameX="-1" frameY="0" frameWidth="88" frameHeight="86"/>
+    <SubTexture name="ui_btn_to_right_normal" x="319" y="197" width="120" height="82"/>
+    <SubTexture name="ui_btn_to_right_selected" x="291" y="428" width="120" height="82"/>
     <SubTexture name="ui_head_bar_bg" x="2" y="2" width="480" height="105"/>
+    <SubTexture name="ui_info_bg" x="239" y="429" width="50" height="50"/>
     <SubTexture name="ui_progress_bar_red" x="484" y="2" width="26" height="17"/>
-    <SubTexture name="ui_star" x="2" y="473" width="36" height="35"/>
-    <SubTexture name="ui_star_bg" x="118" y="473" width="33" height="33"/>
-    <SubTexture name="ui_tab_bg" x="64" y="211" width="30" height="58"/>
+    <SubTexture name="ui_star" x="441" y="197" width="36" height="35"/>
+    <SubTexture name="ui_star_bg" x="296" y="393" width="33" height="33"/>
+    <SubTexture name="ui_tab_bg" x="64" y="437" width="30" height="58"/>
 </TextureAtlas>
